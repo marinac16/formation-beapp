@@ -3,7 +3,6 @@ import MapView, {Marker} from 'react-native-maps';
 import {connect, ConnectedProps} from 'react-redux';
 import {getBikes} from '../../redux/Bike/bikeAction';
 import {RootState} from '../../redux/reducer';
-import {Text, View} from 'react-native';
 
 // ---
 
@@ -23,7 +22,7 @@ type Props = ConnectedProps<typeof connector>;
 const MapScreen = (props: Props) => {
   return (
     <MapView
-      style={{borderWidth: 2, flex: 1}}
+      style={{flex: 1}}
       initialRegion={{
         latitude: 47.218371,
         longitude: -1.553621,
@@ -33,17 +32,15 @@ const MapScreen = (props: Props) => {
       {props.bikes.map((marker, index) => {
         return (
           <Marker
-            key={index}
             coordinate={{
               latitude: marker.position.latitude,
               longitude: marker.position.longitude,
             }}
+            key={index}
             title={marker.name}
-            description={marker.address}>
-            <View style={{backgroundColor: 'red', padding: 5}}>
-              <Text>X</Text>
-            </View>
-          </Marker>
+            description={marker.address}
+            //pinColor="red"
+          />
         );
       })}
     </MapView>

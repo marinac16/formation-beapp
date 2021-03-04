@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {FlatList, SafeAreaView, StyleSheet} from 'react-native';
+import { FlatList, SafeAreaView, StyleSheet } from "react-native";
 import {connect, ConnectedProps} from 'react-redux';
 import {getBikes} from '../../redux/Bike/bikeAction';
 import {RootState} from '../../redux/reducer';
@@ -7,6 +7,7 @@ import BikeDTO from '../../dto/BikeDTO';
 import {StackScreenProps} from '@react-navigation/stack';
 import {RootStackParamList} from '../navigation/RootStackParamList';
 import Item from '../components/Item';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 type StackProps = StackScreenProps<RootStackParamList, 'TabBar'>;
 
@@ -54,8 +55,11 @@ const ListScreen = (props: Props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {},
+const styles = EStyleSheet.create({
+  //$textColor: 'red',
+  container: {
+    backgroundColor: 'white',
+  },
 });
 
 export default connector(ListScreen);

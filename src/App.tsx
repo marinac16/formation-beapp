@@ -14,11 +14,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {RootStackParamList} from './ui/navigation/RootStackParamList';
 import store from './redux/store';
-import HomeScreen from './ui/screens/ListScreen';
 import DetailsScreen from './ui/screens/DetailsScreen';
 import TabBar from './ui/navigation/TabBar';
-
-// declare const global: {HermesInternal: null | {}};
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -44,5 +42,10 @@ const App = () => {
     </Provider>
   );
 };
+
+EStyleSheet.build({
+  // always call EStyleSheet.build() even if you don't use global variables!
+  $textColor: '#0275d8',
+});
 
 export default App;
