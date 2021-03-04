@@ -5,7 +5,7 @@ export default interface BikeDTO {
   address: string;
   status: boolean;
   position: {
-    latitude: string;
-    longitude: string;
+    latitude: number;
+    longitude: number;
   };
 }

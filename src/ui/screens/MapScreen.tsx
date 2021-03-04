@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from 'react';
 import MapView, {Marker} from 'react-native-maps';
 import {connect, ConnectedProps} from 'react-redux';
 import {getBikes} from '../../redux/Bike/bikeAction';
 import {RootState} from '../../redux/reducer';
+import {Text, View} from 'react-native';
 
 // ---
 
@@ -20,10 +21,6 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type Props = ConnectedProps<typeof connector>;
 
 const MapScreen = (props: Props) => {
-
-  const bikes = [props.bikes]
-  console.log('voici es bikes ' + bikes);
-
   return (
     <MapView
       style={{borderWidth: 2, flex: 1}}
@@ -34,12 +31,20 @@ const MapScreen = (props: Props) => {
         longitudeDelta: 0.0421,
       }}>
       {props.bikes.map((marker, index) => {
-        <Marker
-          //key={index}
-          coordinate={{ latitude : marker.position.latitude , longitude : marker.position.longitude }}
-          //title={marker.name}
-          //description={marker.address}
-        />
+        return (
+          <Marker
+            key={index}
+            coordinate={{
+              latitude: marker.position.latitude,
+              longitude: marker.position.longitude,
+            }}
+            title={marker.name}
+            description={marker.address}>
+            <View style={{backgroundColor: 'red', padding: 5}}>
+              <Text>X</Text>
+            </View>
+          </Marker>
+        );
       })}
     </MapView>
   );
