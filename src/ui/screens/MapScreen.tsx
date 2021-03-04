@@ -1,25 +1,11 @@
 import React from 'react';
 import MapView, {Marker} from 'react-native-maps';
-import {connect, ConnectedProps} from 'react-redux';
-import {getBikes} from '../../redux/Bike/bikeAction';
 import {RootState} from '../../redux/reducer';
+import {useSelector} from 'react-redux';
 
-// ---
+const MapScreen = () => {
+  const bikes = useSelector((state: RootState) => state.bikes);
 
-const mapDispatchToProps = {
-  getBikes,
-};
-
-const mapStateToProps = (state: RootState) => {
-  return {bikes: state.bikes};
-};
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-
-// ----
-type Props = ConnectedProps<typeof connector>;
-
-const MapScreen = (props: Props) => {
   return (
     <MapView
       style={{flex: 1}}
@@ -29,7 +15,7 @@ const MapScreen = (props: Props) => {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       }}>
-      {props.bikes.map((marker, index) => {
+      {bikes.map((marker, index) => {
         return (
           <Marker
             coordinate={{
@@ -47,4 +33,4 @@ const MapScreen = (props: Props) => {
   );
 };
 
-export default connector(MapScreen);
+export default MapScreen;

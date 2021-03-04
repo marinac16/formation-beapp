@@ -11,14 +11,13 @@ type ItemProps = {
 
 const Item = ({bike}: ItemProps) => {
   const navigation = useNavigation();
-
   return (
     <View style={styles.container}>
       <Avatar
         rounded
         title={bike.name.substr(4, 2)}
         containerStyle={{
-          backgroundColor: '#1877' + bike.number,
+          backgroundColor: '#1784' + bike.number,
           marginLeft: 20,
           marginTop: 15,
         }}

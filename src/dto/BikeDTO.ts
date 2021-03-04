@@ -8,4 +8,11 @@ export default interface BikeDTO {
     latitude: number;
     longitude: number;
   };
+  totalStands: {
+    capacity: number;
+    availabilities: {
+      bikes: number;
+      stands: number;
+    };
+  };
 }
