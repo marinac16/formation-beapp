@@ -12,7 +12,7 @@ export const getBikes = (contract: string = 'nantes'): AnyAction => {
       request: {
         url: APIEndpoints.API_STATIONS,
         params: {
-          contract,
+          contract: contracts,
           apiKey: APIKey,
         },
       },

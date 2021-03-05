@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {FlatList, SafeAreaView, StyleSheet} from 'react-native';
-import {connect, ConnectedProps} from 'react-redux';
+import { connect, ConnectedProps, useSelector } from "react-redux";
 import {getBikes} from '../../redux/Bike/bikeAction';
 import {RootState} from '../../redux/reducer';
 import BikeDTO from '../../dto/BikeDTO';
@@ -9,7 +9,7 @@ import {RootStackParamList} from '../navigation/RootStackParamList';
 import Item from '../components/Item';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-type StackProps = StackScreenProps<RootStackParamList, 'TabBar'>;
+type StackProps = StackScreenProps<RootStackParamList, 'ListScreen'>;
 
 // ---
 
@@ -38,6 +38,13 @@ const keyExtractor = (item: BikeDTO, index: number) => {
 type Props = ConnectedProps<typeof connector> & StackProps;
 
 const ListScreen = (props: Props) => {
+  /*const contracts = useSelector((state: RootState) => state.contract);
+  console.log(
+    contracts.map((c) => {
+      c.name;
+    }),
+  );*/
+
   useEffect(() => {
     props.getBikes().catch(console.log);
   }, []);

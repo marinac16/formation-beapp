@@ -1,7 +1,8 @@
 import BikeDTO from '../../dto/BikeDTO';
 
 export type RootStackParamList = {
-  TabBar: undefined;
+  ContractScreen: undefined;
+  ListScreen: undefined;
   DetailsScreen: {bike: BikeDTO};
   MapScreen: undefined;
   SearchScreen: undefined;
