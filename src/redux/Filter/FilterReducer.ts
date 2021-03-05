@@ -3,7 +3,7 @@ import {FilterActionEnum} from './FilterAction';
 
 export type FilterState = {
   keyword: string;
-  open: string;
+  open: boolean;
   banking: boolean;
   bonus: boolean;
 };

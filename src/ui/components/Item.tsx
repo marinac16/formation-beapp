@@ -24,7 +24,7 @@ const Item = ({bike}: ItemProps) => {
       />
       <Text
         onPress={() => {
-          navigation.navigate('DetailsScreen', {bike});
+          navigation.navigate('DetailsScreen', {bike: bike});
         }}
         style={styles.text}>
         {bike.name.substr(4, bike.name.length - 4)}
