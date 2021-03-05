@@ -8,15 +8,17 @@
  * @format
  */
 
-import React from 'react';
+import React, { Props } from "react";
 import {Provider} from 'react-redux';
-import {NavigationContainer} from '@react-navigation/native';
+import store from './redux/store';
+import EStyleSheet from 'react-native-extended-stylesheet';
 import {createStackNavigator} from '@react-navigation/stack';
 import {RootStackParamList} from './ui/navigation/RootStackParamList';
-import store from './redux/store';
-import DetailsScreen from './ui/screens/DetailsScreen';
+import {NavigationContainer} from '@react-navigation/native';
 import TabBar from './ui/navigation/TabBar';
-import EStyleSheet from 'react-native-extended-stylesheet';
+import {Button} from 'react-native';
+import DetailsScreen from './ui/screens/DetailsScreen';
+import SearchScreen from './ui/screens/SearchScreen';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -27,9 +29,20 @@ const Navigation = () => {
         <RootStack.Screen
           name="TabBar"
           component={TabBar}
-          options={{title: 'Stations'}}
+          options={({route, navigation}) => ({
+            title: 'Stations',
+            headerRight: () => (
+              <Button
+                title="Search"
+                onPress={() => {
+                  navigation.navigate('SearchScreen');
+                }}
+              />
+            ),
+          })}
         />
         <RootStack.Screen name="DetailsScreen" component={DetailsScreen} />
+        <RootStack.Screen name="SearchScreen" component={SearchScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
@@ -49,3 +62,5 @@ EStyleSheet.build({
 });
 
 export default App;
+
+

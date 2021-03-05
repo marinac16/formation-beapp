@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { FlatList, SafeAreaView, StyleSheet } from "react-native";
+import {FlatList, SafeAreaView, StyleSheet} from 'react-native';
 import {connect, ConnectedProps} from 'react-redux';
 import {getBikes} from '../../redux/Bike/bikeAction';
 import {RootState} from '../../redux/reducer';
