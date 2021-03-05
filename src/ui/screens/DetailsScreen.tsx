@@ -9,7 +9,7 @@ type Props = StackScreenProps<RootStackParamList, 'DetailsScreen'>;
 
 const DetailsScreen = (props: Props) => {
   const {bike} = props.route.params;
-  const statusBike: boolean = bike.status;
+  const statusBike: string = bike.status;
   const bikeAvailable: number = bike.totalStands.availabilities.bikes;
   const standAvailable: number = bike.totalStands.availabilities.stands;
   const standCapacity: number = bike.totalStands.capacity;
@@ -22,7 +22,7 @@ const DetailsScreen = (props: Props) => {
           <Card.Title style={styles.title}>
             {bike.name.substr(4, bike.name.length - 4)}
           </Card.Title>
-          {statusBike ? (
+          {statusBike === 'OPEN' ? (
             <Icon name="check-circle" type="font-awesome" color="green" />
           ) : (
             <Icon name="times-circle" type="font-awesome" color="red" />

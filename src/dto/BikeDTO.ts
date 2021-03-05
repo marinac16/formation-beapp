@@ -3,7 +3,9 @@ export default interface BikeDTO {
   name: string;
   contractName: string;
   address: string;
-  status: boolean;
+  status: string;
+  bonus: boolean;
+  banking: boolean;
   position: {
     latitude: number;
     longitude: number;
